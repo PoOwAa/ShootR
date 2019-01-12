@@ -1,3 +1,11 @@
+/**
+ * Client side ShootRMaps
+ *
+ * When socket communication is ready, the server will send this data
+ * to Clients.
+ *
+ * TODO: Remove when socket is ready
+ */
 define(require => {
     const spriteImages = require('./SpriteImage');
     const maps = {

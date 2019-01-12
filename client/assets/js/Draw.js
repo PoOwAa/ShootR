@@ -4,13 +4,11 @@ define(require => {
     class Draw {
         /**
          * Creates an instance of Draw.
-         * @param {*} context
+         * @param {CanvasRenderingContext2D} context
          * @memberof Draw
          */
         constructor(context) {
             this.context = context;
-
-            this.sprites = [];
         }
 
         /**
@@ -26,7 +24,7 @@ define(require => {
         }
 
         /**
-         * Clears the canvas
+         * Clear the canvas
          *
          * @memberof Draw
          */
@@ -39,26 +37,65 @@ define(require => {
             );
         }
 
+        /**
+         *
+         *
+         * @param {ShootRMap} map
+         * @memberof Draw
+         */
         drawMap(map) {
-            // console.log(map);
+            /**
+             * Save the state of context before changing it. It can improve
+             * performance if the rest of context manipulation are static,
+             * but with complex algorithm. Color of entities etc.
+             *
+             * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save
+             */
             this.context.save();
-            // Scale down sprite size
+
+            /*******************************************************************
+             * Custom scale for map
+             *
+             * With low resolution + downscale the app is consuming less CPU,
+             * but the quality could be much worse. The best option should be
+             * an eye catchy version with minimum CPU usage
+             *
+             * Resolution: 1920x1080    Scale: 1    CPU: ~20-25%
+             * Resolution: 1440x810     Scale: 0.75 CPU: ~15-20%
+             * Resolution: 960x540      Scale: 0.5  CPU: ~10-15%
+             *****************************************************************/
             this.context.scale(map.scale.x, map.scale.y);
+
+            /**
+             * Draw the neccessary sprites in the map
+             */
+            // Rows
             for (let rowIndex = 0; rowIndex < map.tiles.length; rowIndex++) {
                 const row = map.tiles[rowIndex];
-                // console.log(row);
+
+                // Cols
                 for (let colIndex = 0; colIndex < row.length; colIndex++) {
+                    // The index of tile on the sprite image
                     const tileIndex = map.tiles[rowIndex][colIndex];
 
+                    /**
+                     * Sprite tile indexing starts with 0, so we can use -1
+                     * in the map for "blank" sprites
+                     *
+                     * If you need background sprites, not environment, use
+                     * CSS background-image on the canvas. Much faster
+                     */
                     if (tileIndex === -1) {
                         continue;
                     }
-                    // console.log(titleIndex);
+
+                    // Coordinates of tile in sprite image
                     const clipX = map.spriteImage.getClipX(tileIndex);
                     const clipY = map.spriteImage.getClipY(tileIndex);
+
+                    // Coordinates where to draw the sprite
                     const tileX = map.spriteImage.tileWidth * colIndex;
                     const tileY = map.spriteImage.tileHeight * rowIndex;
-                    // console.log(clipX, clipY, tileX, tileY);
 
                     // Draw sprite
                     this.context.drawImage(
@@ -74,13 +111,15 @@ define(require => {
                     );
                 }
             }
+
+            // Change scale back to 1
             this.context.setTransform(1, 0, 0, 1, 0, 0);
-            this.context.restore();
-        }
 
-        drawSprites() {
-            this.context.save();
-
+            /**
+             * Restore the saved state of context
+             *
+             * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/restore
+             */
             this.context.restore();
         }
     }
