@@ -15,6 +15,10 @@ app.use(
 );
 app.use('/js', express.static(path.join(__dirname, '../../client/assets/js')));
 app.use(
+    '/img',
+    express.static(path.join(__dirname, '../../client/assets/img'))
+);
+app.use(
     '/sprites',
     express.static(path.join(__dirname, '../../client/assets/sprites'))
 );
