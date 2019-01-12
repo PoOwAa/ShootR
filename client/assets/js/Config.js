@@ -1,8 +1,8 @@
 define(require => {
     const Config = {
         Game: {
-            CANVAS_WIDTH: 900,
-            CANVAS_HEIGHT: 500,
+            CANVAS_WIDTH: 1920,
+            CANVAS_HEIGHT: 1080,
         },
         Dir: {
             SPRITE: '/sprites/',

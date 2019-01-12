@@ -42,11 +42,17 @@ define(require => {
         drawMap(map) {
             // console.log(map);
             this.context.save();
+            // Scale down sprite size
+            this.context.scale(map.scale.x, map.scale.y);
             for (let rowIndex = 0; rowIndex < map.tiles.length; rowIndex++) {
                 const row = map.tiles[rowIndex];
                 // console.log(row);
                 for (let colIndex = 0; colIndex < row.length; colIndex++) {
                     const tileIndex = map.tiles[rowIndex][colIndex];
+
+                    if (tileIndex === -1) {
+                        continue;
+                    }
                     // console.log(titleIndex);
                     const clipX = map.spriteImage.getClipX(tileIndex);
                     const clipY = map.spriteImage.getClipY(tileIndex);
@@ -54,6 +60,7 @@ define(require => {
                     const tileY = map.spriteImage.tileHeight * rowIndex;
                     // console.log(clipX, clipY, tileX, tileY);
 
+                    // Draw sprite
                     this.context.drawImage(
                         map.spriteImage.image,
                         clipX,
@@ -67,7 +74,7 @@ define(require => {
                     );
                 }
             }
-
+            this.context.setTransform(1, 0, 0, 1, 0, 0);
             this.context.restore();
         }
 

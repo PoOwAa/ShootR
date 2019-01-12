@@ -5,11 +5,13 @@
 
 body {
     background-color: #bfbfbf;
+    overflow: hidden;
+    height: 100%;
 }
 
 canvas {
-    width: 912px;
-    height: 480px;
+    width: 100%;
+    height: calc(100vh - 141px);
     border: 1px solid black;
     cursor: crosshair;
     background-image: url('../sprites/bg.jpg');
