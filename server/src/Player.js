@@ -18,10 +18,8 @@ class Player extends Entity {
     static generateNewPlayer(name, id) {
         return new Player(
             [
-                // Util.getRandomInt(Config.get('Game.width')),
-                // Util.getRandomInt(Config.get('Game.height')),
-                400,
-                100,
+                Util.getRandomInt(Config.get('Game.width')),
+                Util.getRandomInt(Config.get('Game.height')),
             ],
             name,
             id
