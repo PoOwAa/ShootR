@@ -14,6 +14,7 @@ define(require => {
         const maps = require('./Maps');
         const Game = require('./Game');
         const Input = require('./Input');
+        const LeaderBoard = require('./LeaderBoard');
 
         const socket = io();
 
@@ -40,6 +41,10 @@ define(require => {
                 // Render game
                 console.log('Player created, drawing the game');
                 game.animate();
+
+                setInterval(() => {
+                    LeaderBoard.drawPlayerData(game);
+                }, 1000);
             });
         }
     });

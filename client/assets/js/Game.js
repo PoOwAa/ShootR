@@ -65,7 +65,6 @@ define(require => {
             console.log('Starting to listen to server');
             // Draw the map
             // TODO: if viewPort is dynamic, move this into loop
-            console.log(this.world.map);
             this.mapDraw.drawMap(this.world.map);
             this.socket.on('update', data => {
                 this.receiveGameState(data);
@@ -124,14 +123,6 @@ define(require => {
                     keyboardState,
                     timestamp: new Date().getTime(),
                 };
-                if (
-                    keyboardState.up ||
-                    keyboardState.right ||
-                    keyboardState.down ||
-                    keyboardState.left
-                ) {
-                    console.log(keyboardState);
-                }
 
                 this.socket.emit('player-action', packet);
             }
