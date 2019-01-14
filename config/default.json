@@ -1,0 +1,22 @@
+{
+    "Server": {
+        "port": 5000,
+        "frameRate": 60
+    },
+    "Game": {
+        "width": 1920,
+        "height": 1080
+    },
+    "World": {
+        "minX": 0,
+        "maxX": 1920,
+        "minY": 0,
+        "maxY": 1080
+    },
+    "Physics": {
+        "gravity": 2.5,
+        "velocityY": 50,
+        "velocityX": 0.3,
+        "friction": 0.9
+    }
+}
