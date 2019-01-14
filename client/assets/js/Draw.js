@@ -128,8 +128,8 @@ define(require => {
             this.context.save();
             this.context.translate(coords[0], coords[1]);
             this.context.textAlign = 'center';
-            this.context.font = '14px Helvetica';
-            this.context.fillStyle = 'black';
+            this.context.font = '32px Helvetica';
+            this.context.fillStyle = 'white';
             this.context.fillText(name, 0, -50);
             if (isSelf) {
                 this.context.fillStyle = 'red';
