@@ -122,6 +122,41 @@ define(require => {
              */
             this.context.restore();
         }
+
+        drawPlayer(isSelf, coords, name, health) {
+            // Player name
+            this.context.save();
+            this.context.translate(coords[0], coords[1]);
+            this.context.textAlign = 'center';
+            this.context.font = '14px Helvetica';
+            this.context.fillStyle = 'black';
+            this.context.fillText(name, 0, -50);
+            if (isSelf) {
+                this.context.fillStyle = 'red';
+            } else {
+                this.context.fillStyle = 'green';
+            }
+            this.context.fillRect(-25, 0, 50, 100);
+            this.context.restore();
+
+            // Player health
+            this.context.save();
+            this.context.translate(coords[0], coords[1]);
+            for (let i = 0; i < 10; i++) {
+                if (i < health) {
+                    this.context.fillStyle = 'green';
+                } else {
+                    this.context.fillStyle = 'red';
+                }
+                this.context.fillRect(-25 + 5 * i, -42, 5, 4);
+            }
+            this.context.restore();
+
+            // Player shape
+            // this.context.save();
+            // this.context.translate(coords[0], coords[1]);
+            // this.context.restore();
+        }
     }
 
     return Draw;

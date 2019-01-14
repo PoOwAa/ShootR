@@ -10,10 +10,21 @@ body {
 }
 
 canvas {
+    position: absolute;
+    top: 141px;
+    left: 0;
     width: 100%;
     height: calc(100vh - 141px);
-    border: 1px solid black;
+}
+
+#canvas {
+    z-index: 101;
     cursor: crosshair;
+}
+
+#mapCanvas {
+    z-index: 100;
+    border: 1px solid black;
     background-image: url('../sprites/bg.jpg');
     background-size: cover;
 }

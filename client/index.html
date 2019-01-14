@@ -27,7 +27,9 @@
             <div style="height: 141px;">
                 <div class="row">
                     <div class="col-xs-3 col-md-4 text-center">
-                        Online players
+                        <button id="startGame" class="btn btn-primary">
+                            Start game
+                        </button>
                     </div>
                     <div class="col-xs-6 col-md-4 text-center">
                         <img src="img/logo.png" alt="ShootR Logo" />
@@ -38,6 +40,7 @@
                 </div>
             </div>
             <div class="row text-center"><canvas id="canvas"></canvas></div>
+            <div class="row text-center"><canvas id="mapCanvas"></canvas></div>
         </div>
     </body>
     <!-- Latest compiled and minified JavaScript -->
@@ -46,5 +49,6 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"
     ></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script data-main="js/Client" src="js/require.js"></script>
 </html>
