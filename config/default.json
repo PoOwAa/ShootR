@@ -14,7 +14,7 @@
         "maxY": 1080
     },
     "Physics": {
-        "gravity": 2.5,
+        "gravity": 4,
         "velocityY": 50,
         "velocityX": 0.5,
         "friction": 0.9

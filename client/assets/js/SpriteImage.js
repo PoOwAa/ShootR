@@ -14,9 +14,9 @@ define(require => {
          * @param {string} image        The src of the sprite file
          * @param {number} tileWidth    Tiles width in pixels. MUST have the same tile width in 1 sprite.
          * @param {number} tileHeight   Tiles height in pixels. MUST have the same tile height in 1 sprite.
-         * @param {number} rows
-         * @param {number} cols
-         * @param {number[]} [environment=[]]
+         * @param {number} rows         Number of rows on the picture
+         * @param {number} cols         Number of cols on the picture
+         * @param {number[]} [environment=[]]   The index of environment tiles
          * @memberof SpriteImage
          */
         constructor(
